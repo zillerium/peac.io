@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 const initData = {
     pre_heading: "Peacio",
-    heading: "Global Catalog of Products for Sale ",
-    content: "Pay using stabelcoins",
+    heading: "Buy using your blockchain account ",
+    content: "Anywhere, anydevice",
     btn_1: "Explore",
     btn_2: "Create"
 }
