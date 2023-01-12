@@ -2,6 +2,8 @@ import {Card, Button, Form, Row, Col} from 'react-bootstrap';
 import {CartContext} from '../CartContext';
 import {useContext} from 'react';
 import axios from 'axios';
+import {Link, useMatch, useResolvedPath} from "react-router-dom"
+
 const Checkout = (props) => {
  const cart = useContext(CartContext);
       console.log(cart.items.length);
@@ -15,8 +17,13 @@ const Checkout = (props) => {
 
         }
 
+ //<p><Button disabled={(cart.items.length==0) ? true : false} onClick={checkout} >Buy</Button></p>               
+		       // <Link to="/pay" >
+	         	//</Link>
 	return (
- <div><Button disabled={(cart.items.length==0) ? true : false} onClick={checkout} >Buy</Button></div>               
+		               <Button disabled={(cart.items.length==0) ? true : false} 
+		               onClick={()=>cart.closeModal()}>Buy</Button>
+
         )
 
 }

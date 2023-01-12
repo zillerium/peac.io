@@ -15,6 +15,7 @@ import Store from './pages/Store'
 import About from './pages/About'
 import ProductPage from './pages/ProductPage'
 import AddProduct from './pages/AddProduct'
+import Pay from './pages/Pay'
 import Success from './pages/Success'
 import CartProvider from './CartContext.js'
 import './styles.css'
@@ -113,6 +114,7 @@ return ( data ? <img src={data.data.url}/> : <p></p>);
                      <Route path="cancel" element={<Cancel />} />     
                      <Route path="/product/:productId" element={<ProductPage />} />
                      <Route path="/addproduct/" element={<AddProduct />} />
+                     <Route path="/pay/" element={<Pay />} />
                      <Route path="/about/" element={<About />} />
                      <Route path="/cart/" element={<Cart />} />
 	        </Routes>

@@ -4,13 +4,14 @@ import axios  from 'axios';
 import {CartContext} from '../CartContext';
 import CartProduct from './CartProduct';
 import CartTotal from './CartTotal';
+import {Link, useMatch, useResolvedPath} from "react-router-dom"
 
 const NavbarComponent=()=>{
 
     const cart = useContext(CartContext);
     const [show, setShow]=useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => {setShow(false); cart.closeModal(); }
+    const handleShow = () => {setShow(true);  }
 
 	const checkout = async () => {
 
@@ -72,8 +73,21 @@ return (
 
 		        : <tbody>
 				</tbody>
-	                }
-	     <CartTotal cart={cart}/>
+	                
+			}
+
+<tr>
+	<td>Total</td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td>${(cart.getTotalCost()).toFixed(2)}</td>
+	<td>	<Link to="/pay">
+		               <Button disabled={(cart.items.length==0) ? true : false} 
+		               onClick={()=>handleClose()}>Buy</Button>
+	</Link></td></tr>
+
+
                                          </Table>
 	           </Modal.Body> 
 
