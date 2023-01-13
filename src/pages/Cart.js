@@ -65,8 +65,18 @@ const [search, setSearch] = useState("");
                                         </tr>
                                 )
                         })}
-                    		<CartTotal cart={cart}/>
                                        </tbody>
+<tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>${(cart.getTotalCost()).toFixed(2)}</td>
+        <td>    <Link to="/pay">
+                               <Button disabled={(cart.items.length==0) ? true : false}
+                               >Buy</Button>
+        </Link></td></tr>
+
                                          </Table>
                                         </div>
         </div>    
