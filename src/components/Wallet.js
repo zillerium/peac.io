@@ -4,6 +4,7 @@ import { Web3Modal } from "@web3modal/standalone";
 import {Container, Card, Button, Form, Row, Col} from 'react-bootstrap';
 import {CartContext} from '../CartContext';
 import {useContext} from 'react';
+import ReactPlayer from 'react-player';
 
 
 function Wallet() {
@@ -158,6 +159,9 @@ if (cart.sessions.length>0) console.log(cart.sessions.namespaces.eip155.accounts
                        </Card>
 
 </Col>
+	  <Col>
+                 <ReactPlayer url="https://www.youtube.com/watch?v=iQ-nKIp4kfk"/>
+	  </Col>
 	      </Row>
 	  </Container>
 	  <h2>Connection</h2>

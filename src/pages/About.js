@@ -3,13 +3,14 @@ import {useQuery, useMutation} from 'react-query';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComponent from '../components/NavbarComponent';
-import {Container} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 import {Link, BrowserRouter ,  Routes, Route} from 'react-router-dom';
 import Cancel from './Cancel'
 import Store from './Store'
 import ProductPage from './ProductPage'
 import Success from './Success'
 import CartProvider from '../CartContext.js'
+import ReactPlayer from 'react-player'
 
 const About = () => {
 
@@ -17,20 +18,20 @@ const About = () => {
 
   return (
     <div >
-	  <CartProvider>
-         <Container>
-	    <NavbarComponent>
-
-	    </NavbarComponent>
-          <div>
-	  </div>
-	  </Container>
-</CartProvider>
 
       <header >
 	  <h1>About Us</h1>
         <p>We link wallets to product sales.
         </p>
+<Container>
+	  <Row><Col></Col>
+	  <Col>
+                 <ReactPlayer url="https://www.youtube.com/watch?v=JU0dBWZQr5I"/>
+</Col>
+	  <Col></Col>
+	  </Row>
+	  </Container>
+
       </header>
     </div>
   );

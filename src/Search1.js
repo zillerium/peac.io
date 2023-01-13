@@ -5,6 +5,8 @@ import axios from 'axios';
 import {CartContext} from './CartContext';
 import {Table, Card, Button, Form, Row, Col} from 'react-bootstrap';
 import {ProductPage} from './pages/ProductPage';
+import {ArrowRight,Search} from 'react-bootstrap-icons';
+
 // import {productsArray} from '../productsStore';
 //import ProductCard from '../components/ProductCard';
   //                    {productsArray.map((product, idx) => (
@@ -31,7 +33,7 @@ const Search1 =  () => {
 	<div>
 	  <div>
 	    <input type="text" onChange={(e) => setSearch(e.target.value)}/>
-            <button onClick={()=>searchDB(search)} >Search </button>
+            <Button onClick={()=>searchDB(search)} ><Search  /> </Button>
 
 
           </div>
