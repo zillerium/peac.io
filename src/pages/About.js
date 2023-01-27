@@ -36,6 +36,24 @@ const About = () => {
           </Col>
 	  <Col></Col>
 	  </Row>
+	  <Row><Col></Col>
+	  <Col>
+                 <ReactPlayer url="https://www.youtube.com/watch?v=CZVN0IpZ8K4"/>
+          </Col>
+	  <Col></Col>
+	  </Row>
+	  <Row><Col></Col>
+	  <Col>
+                 <ReactPlayer url="https://www.youtube.com/watch?v=2l61KwzZYEo"/>
+          </Col>
+	  <Col></Col>
+	  </Row>
+	  <Row><Col></Col>
+	  <Col>
+                 <ReactPlayer url="https://www.youtube.com/watch?v=DlzJ7DpnMFE"/>
+          </Col>
+	  <Col></Col>
+	  </Row>
 	  </Container>
 
       </header>
