@@ -55,7 +55,7 @@ const [search, setSearch] = useState("");
                                  <td>    {value.quantity}  </td>
                                  <td>   ${( value.price*value.quantity).toFixed(2)}  </td>
                                         <td> <Button sm="6" 
-                                        onClick={()=>cart.addOneToCart({dbKey:value.id, partSalePrice:value.price, partShortDesc:value.title})
+                                        onClick={()=>cart.addOneToCart({dbKey:value.id, merchantName: value.merchantName, partSalePrice:value.price, partShortDesc:value.title})
                                         }
                                         className="mx-2">+</Button>
                                          <Button sm="6" 

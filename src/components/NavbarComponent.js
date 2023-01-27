@@ -47,6 +47,7 @@ return (
                                             <thead>
                                                  <tr>
                                                       <th>Brand</th>
+                                                      <th>Seller</th>
                                                       <th>Details</th>
                                                       <th>Qty</th>
                                                       <th>Price</th>
@@ -60,6 +61,7 @@ return (
 					      {cart.items.map((currentProduct, idx) => (
 						      <CartProduct key={idx}
                                                       id = {currentProduct.id} 
+                                                      seller= {currentProduct.seller} 
                                                       quantity = {currentProduct.quantity} 
                                                       title = {currentProduct.title} 
                                                       price = {currentProduct.price} 

@@ -21,13 +21,19 @@ const About = () => {
 
       <header >
 	  <h1>About Us</h1>
-        <p>We link wallets to product sales.
+        <p>Contractual Payments without an intermediary.
         </p>
 <Container>
 	  <Row><Col></Col>
 	  <Col>
                  <ReactPlayer url="https://www.youtube.com/watch?v=JU0dBWZQr5I"/>
-</Col>
+          </Col>
+	  <Col></Col>
+	  </Row>
+	  <Row><Col></Col>
+	  <Col>
+                 <ReactPlayer url="https://www.youtube.com/watch?v=spfkaIOsy4k"/>
+          </Col>
 	  <Col></Col>
 	  </Row>
 	  </Container>

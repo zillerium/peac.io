@@ -17,7 +17,7 @@ useEffect(()=>{
 	console.log("**********************************************cart");
 	console.log(cart);
   return (
-    <div className="App">
+    <div >
 <Wallet />
     </div>
   );

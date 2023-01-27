@@ -19,7 +19,7 @@ import Pay from './pages/Pay'
 import Success from './pages/Success'
 import CartProvider from './CartContext.js'
 import './styles.css'
-
+import Wagmitest from './Wagmitest'
 function App() {
 
 	const [image, setImage]=useState(false);

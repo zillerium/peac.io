@@ -166,6 +166,7 @@ const createClient = async () => {
 		const id = props.dbKey;
 		const price = props.partSalePrice;
 		const title = props.partShortDesc;
+		const merchantName = props.merchantName;
 
 		console.log("props  xx====");
 		console.log(props);
@@ -177,7 +178,7 @@ const createClient = async () => {
 		console.log("ddxx====");
 
 		if (quantity === 0) {
-                     setCartProducts([...cartProducts, {id:id, quantity:1, title:title, price: price}])
+                     setCartProducts([...cartProducts, {id:id, seller: merchantName, title: title, quantity:1, price: price}])
 		} else {
                      setCartProducts(
                            cartProducts.map(product=>
@@ -235,6 +236,7 @@ const getTotalCost=()=> {
 	})
 	return totalCost;
 }
+
 
 const contextValue = {
             items: cartProducts,
