@@ -27,28 +27,27 @@ function ContractShow() {
 	        contractDetails, setContractDetails,
                 notary, setNotary
                 } = useContext(ContractContext);
-console.log("shpw start contract details ====");
+        console.log("shpw start contract details ====");
 	console.log(contractDetails);
 	console.log(contractAddress);
-console.log("shpw end contract details ====");
+        console.log("shpw end contract details ====");
 	const [hoverIndex, setHoverIndex]=useState(-1);
 	const handleMouseEnter = (index) => { setHoverIndex(index);}
 	const handleMouseLeave = (index) => { setHoverIndex(-1);}
-  return (
-    <div >
-
+     return (
+        <div >
 	  <b> Contract</b>
                <Table stripod  bordered hover>
-                                            <thead>
-                                                 <tr>
-                                                      <th>Hover</th>
-                                                      <th>Seller</th>
-                                                      <th>Notary</th>
-                                                      <th>Contract</th>
-                                                      <th>Amount</th>
-                                                 </tr>
-                                            </thead>
-                                        <tbody>
+                    <thead>
+                       <tr>
+                         <th>Hover</th>
+                         <th>Seller</th>
+                         <th>Notary</th>
+                         <th>Contract</th>
+                         <th>Amount</th>
+                       </tr>
+                    </thead>
+                    <tbody>
                         {contractDetails.length>0 && contractDetails.map((value, key) => {
                                 return (
 					<React.Fragment key={key}>
