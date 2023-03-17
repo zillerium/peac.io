@@ -33,7 +33,6 @@ function WalletInner(props) {
         const   [contractAddress, setContractAddress] = useState();
         const   [contractDetails, setContractDetails] = useState([{}]);
         const   [notary, setNotary]=useState({address: ''});
-        const   [contractNumber, setContractNumber]=useState(0);
         
 	const isConnectedWallet = props.isConnected;
         const payer = props.address;
@@ -44,7 +43,7 @@ useEffect(() => {
 })
 
 return (
-    <div className="container">
+  <div className="container">
 
         <ContractContext.Provider value={{
                 deployContract, setDeployContract,
@@ -57,31 +56,64 @@ return (
                 contractAddress, setContractAddress,
                 contractDetails, setContractDetails,
                 notary, setNotary
-                contractNumber, setContractNumber
         }}>
 
         <div>
-    	    <div className="row">
-	       <ContractShow />
-	    </div>
+  	  <div className="row">
+	    <ContractShow />
+	  </div>
+	  <div className="row">
+  	     <div className="col-8 text-center">
+	<h2>Setup Contract</h2></div>
+
+  	     <div className="col-4 text-center">
+<p><PaymentText paymentType="hover for help" paymentDesc="when there is a dot hover for more" paymentHeader="Help" /></p>
+	</div> 
+	</div>
+	<div className="row">
+  	     <div className="col-12 text-center">
+	<p>This is done once for a buyer/seller relationship. Then for all new transactions the two approves should be done, or a large
+<PaymentText paymentType="approval" paymentDesc="you approve the contracts to make payments" paymentHeader="Approval" />
+	can be done, and then just the payment part authorised for different contractual obligations. For example, this can be 
+	used for <PaymentText paymentType="rent" paymentDesc="recurring payments" paymentHeader="Rent" />, mortgage payments, 
+	<PaymentText paymentType="shopping" paymentDesc="regular shopping payments" paymentHeader="Shopping" />, and anything which requires a contract</p>
+            </div>
 	</div>
 
-        <div>
-	   <div className="row">
-  	       <div className="col-12 text-center">
-	           <h2>Settle Contract</h2>
-               </div>
-   	   </div>
-	   <div className="row">
-               <div className="col-12 text-center">
+	<div className="row">
+  	     <div className="col-12 ">
+	{ deployContract && <DeployContract />	}
+	{ !deployContract && <Button variant="secondary" disabled>1. Create Contract</Button>	}
+        </div>
+</div>
+	<div className="row">
+  	     <div className="col-6 ">
+	{ approveContract && <ApproveContract />	}
+	{ !approveContract && <Button variant="secondary" disabled>2. Approve StableCoin Contract</Button>	}
+        </div>
+  	     <div className="col-6 ">
+	
+	{ approveEscrowContract && <ApproveEscrowContract />	}
+	{ !approveEscrowContract && <Button variant="secondary" disabled>3. Approve Escrow Contract</Button>	}
 
-	           { payContract && <PayContract />	}
-	           { !payContract && <Button variant="secondary" disabled>1. Pay to Escrow</Button>	}
+        </div>
+        </div>
 
-	           { paySeller && <PaySeller />	}
-	           { !paySeller && <Button variant="secondary" disabled>2. Settle to Seller</Button>	}
-	       </div>
-           </div>
+	<div className="row">
+  	     <div className="col-12 text-center">
+	<h2>Settle Contract</h2>
+              </div>
+	</div>
+	 <div className="row">
+             <div className="col-12 text-center">
+
+	{ payContract && <PayContract />	}
+	{ !payContract && <Button variant="secondary" disabled>4. Pay to Escrow</Button>	}
+
+	{ paySeller && <PaySeller />	}
+	{ !paySeller && <Button variant="secondary" disabled>5. Settle to Seller</Button>	}
+	   </div>
+         </div>
 	</div>
         </ContractContext.Provider>
   </div>
