@@ -1,37 +1,25 @@
-import {Web3Button} from '@web3modal/react';
-import {useContext, useState} from 'react'
-import {goerli,polygonMumbai, avalancheFuji, avalanche, polygon,mainnet } from "wagmi/chains";
-import {WagmiConfig,  useAccount,
-        configureChains, createClient, useNetwork, useConnect, chain, useContractWrite, usePrepareContractWrite} from "wagmi";
-import {EthereumClient, modalConnectors, walletConnectProvider} from "@web3modal/ethereum"
-import { publicProvider } from 'wagmi/providers/public';
+import {useContext} from 'react'
+import {  
+            useContractWrite, usePrepareContractWrite} from "wagmi";
 import {ContractContext} from './ContractContext'
-import bytecode1 from './bytecode';
+import {Container, Card, Button, Form, Row, Col} from 'react-bootstrap';
 
 import abi from './abi';
 
 function ApproveEscrowContract() {
 
 	 const  {
-                deployContract, setDeployContract,
-                approveContract, setApproveContract,
+                approveAmount, setApproveAmount,
                 payContract, setPayContract,
-                approveEscrowContract, setApproveEscrowContract,
-                paySeller, setPaySeller,
-                paymentAmount, setPaymentAmount,
-                erc20ContractAddress, setERC20ContractAddress,
                 contractAddress, setContractAddress,
-                contractDetails, setContractDetails,
-                notary, setNotary
                 } = useContext(ContractContext)
-        let totAmount = contractDetails.reduce((total,item)=>total+item.totalAmount,0);
-  totAmount = totAmount * (10 ** 6);
-
+console.log("----app amt -- ", approveAmount);
+const approveAmount1 = 10000000000000;
   const {config, error} = usePrepareContractWrite({
                    address: contractAddress,
           abi: abi,
           functionName: 'approveContractTransfer',
-          args:[totAmount]
+          args:[approveAmount1]
   })
 console.log(config);
                 const {data, isLoading, isSuccess, write} = useContractWrite(config)
@@ -41,16 +29,15 @@ console.log(config);
         console.log(data)
 
 	 if (isSuccess) {
-     setPayContract(true);
-         setApproveEscrowContract(false);
- }
+		 setPayContract(true);
+         }
 
 
 
 
     return (
         <>
-        <div><button disabled={!write} onClick={()=>write?.()}>Approve contract to pay {paymentAmount}</button></div>
+        <div><Button  onClick={()=>write?.()}>Approve contract to pay {approveAmount}</Button></div>
             {error && (<div> error in formatting {error.message} </div>)}
    <div><p>contract approval to pay=   at address {contractAddress}</p></div>
         </>
@@ -58,15 +45,5 @@ console.log(config);
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
 export default ApproveEscrowContract;
+

@@ -2,29 +2,16 @@ import React, {useState} from 'react';
 import {useQuery, useMutation} from 'react-query';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarComponent from '../components/NavbarComponent';
 import {Container, Button} from 'react-bootstrap';
-import {Link, BrowserRouter ,  Routes, Route} from 'react-router-dom';
-import Cancel from './Cancel'
-import Store from './Store'
-import ProductPage from './ProductPage'
-import Success from './Success'
 import CartProvider from '../CartContext.js'
 
 const AddProduct = () => {
 
 	const [password, setPassword]=useState("");
 	const [correct, setCorrect]=useState(false);
-
-
-
-
-
 	const [image, setImage]=useState(false);
-
 	const [firstName, setFirstName]=useState("");
 	const [lastName, setLastName]=useState("");
-
 	const [manName, setManName] = useState("");
 	const [partNumber, setPartNumber] = useState("");
 	const [manPartNumber, setManPartNumber] = useState("");

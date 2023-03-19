@@ -1,7 +1,5 @@
 import {useParams, useLocation, useNavigate, Link} from "react-router-dom";
 import React, {useState, useContext} from 'react';
-import axios from 'axios';
-import {useQuery}  from 'react-query';
 import {Container, Button, Row, Col, Image, Table} from 'react-bootstrap';
 
 import {CartContext} from '../CartContext';

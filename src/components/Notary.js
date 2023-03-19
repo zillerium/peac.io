@@ -1,10 +1,4 @@
-import {Web3Button} from '@web3modal/react';
-import {useContext, useEffect, useState} from 'react'
-import {goerli,polygonMumbai, avalancheFuji, avalanche, polygon,mainnet } from "wagmi/chains";
-import {WagmiConfig,  useAccount,
-	configureChains, createClient, useNetwork, useConnect, chain} from "wagmi";
-import {EthereumClient, modalConnectors, walletConnectProvider} from "@web3modal/ethereum"
-import { publicProvider } from 'wagmi/providers/public';
+import {useContext, useEffect} from 'react'
 import {ContractContext} from './ContractContext'
 
 function Notary() {

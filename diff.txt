@@ -1,0 +1,381 @@
+diff --git a/public/connected.png b/public/connected.png
+new file mode 100644
+index 0000000..9acbcac
+Binary files /dev/null and b/public/connected.png differ
+diff --git a/public/favicon.ico b/public/favicon.ico
+index a11777c..c1fa0c8 100644
+Binary files a/public/favicon.ico and b/public/favicon.ico differ
+diff --git a/public/images/2606000.jpg b/public/images/2606000.jpg
+new file mode 100644
+index 0000000..491567c
+Binary files /dev/null and b/public/images/2606000.jpg differ
+diff --git a/public/images/26376001.jpg b/public/images/26376001.jpg
+new file mode 100644
+index 0000000..55b75fb
+Binary files /dev/null and b/public/images/26376001.jpg differ
+diff --git a/public/images/26547000.jpg b/public/images/26547000.jpg
+new file mode 100644
+index 0000000..2533220
+Binary files /dev/null and b/public/images/26547000.jpg differ
+diff --git a/public/images/27032001.jpg b/public/images/27032001.jpg
+new file mode 100644
+index 0000000..1cd2a1d
+Binary files /dev/null and b/public/images/27032001.jpg differ
+diff --git a/public/search.png b/public/search.png
+new file mode 100644
+index 0000000..4bf34ce
+Binary files /dev/null and b/public/search.png differ
+diff --git a/public/unconnected.png b/public/unconnected.png
+new file mode 100644
+index 0000000..3d6c583
+Binary files /dev/null and b/public/unconnected.png differ
+diff --git a/src/components/ContractShow.js b/src/components/ContractShow.js
+index ba723a8..d44c5e4 100644
+--- a/src/components/ContractShow.js
++++ b/src/components/ContractShow.js
+@@ -27,27 +27,28 @@ function ContractShow() {
+ 	        contractDetails, setContractDetails,
+                 notary, setNotary
+                 } = useContext(ContractContext);
+-        console.log("shpw start contract details ====");
++console.log("shpw start contract details ====");
+ 	console.log(contractDetails);
+ 	console.log(contractAddress);
+-        console.log("shpw end contract details ====");
++console.log("shpw end contract details ====");
+ 	const [hoverIndex, setHoverIndex]=useState(-1);
+ 	const handleMouseEnter = (index) => { setHoverIndex(index);}
+ 	const handleMouseLeave = (index) => { setHoverIndex(-1);}
+-     return (
+-        <div >
++  return (
++    <div >
++
+ 	  <b> Contract</b>
+                <Table stripod  bordered hover>
+-                    <thead>
+-                       <tr>
+-                         <th>Hover</th>
+-                         <th>Seller</th>
+-                         <th>Notary</th>
+-                         <th>Contract</th>
+-                         <th>Amount</th>
+-                       </tr>
+-                    </thead>
+-                    <tbody>
++                                            <thead>
++                                                 <tr>
++                                                      <th>Hover</th>
++                                                      <th>Seller</th>
++                                                      <th>Notary</th>
++                                                      <th>Contract</th>
++                                                      <th>Amount</th>
++                                                 </tr>
++                                            </thead>
++                                        <tbody>
+                         {contractDetails.length>0 && contractDetails.map((value, key) => {
+                                 return (
+ 					<React.Fragment key={key}>
+diff --git a/src/components/PayContract.js b/src/components/PayContract.js
+index efa2124..5b3b5a6 100644
+--- a/src/components/PayContract.js
++++ b/src/components/PayContract.js
+@@ -9,7 +9,6 @@ import {ContractContext} from './ContractContext'
+ import bytecode1 from './bytecode';
+ import {Container, Card, Button, Form, Row, Col} from 'react-bootstrap';
+ 
+-import { BigNumber} from 'bignumber.js';
+ import abi from './abi';
+ 
+ function ApproveEscrowContract() {
+@@ -25,31 +24,28 @@ function ApproveEscrowContract() {
+                 contractAddress, setContractAddress,
+                 contractDetails, setContractDetails,
+                 notary, setNotary
+-                contractNumber, setContractNumber
+                 } = useContext(ContractContext)
+         let totAmount = contractDetails.reduce((total,item)=>total+item.totalAmount,0);
+ 	const stableCoinAmount = totAmount;
+-        totAmount = totAmount * (10 ** 6);
+-        const maxint256 = new BigNumber(2).pow(256).minus(1);
+-	const ranNumber = BigNumber.random({crypto:true}).times(maxUint256).integerValue();
+-        const {config, error} = usePrepareContractWrite({
++  totAmount = totAmount * (10 ** 6);
++
++const {config, error} = usePrepareContractWrite({
+                    address: contractAddress,
+-                   abi: abi,
+-                   functionName: 'approveAndTransferUSDC',
+-               //    args:[totAmount]
+-                   args:[contractNumber, paySeller, notary, releaseTime, disputeRelease, totAmount  ]
+-        })
+-        console.log(config);
+-        const {data, isLoading, isSuccess, write} = useContractWrite(config)
++          abi: abi,
++          functionName: 'approveAndTransferUSDC',
++          args:[totAmount]
++  })
++console.log(config);
++                const {data, isLoading, isSuccess, write} = useContractWrite(config)
+         if (isLoading) {
+-           return <div>Loading ...</div>
++             return <div>Loading ...</div>
+         }
+         console.log(data)
+ 
+-        if (isSuccess) {
+-           setPaySeller(true);
+-           setPayContract(false);
+-        }
++ if (isSuccess) {
++     setPaySeller(true);
++         setPayContract(false);
++ }
+ 
+ 
+ 
+diff --git a/src/components/WalletInner.js b/src/components/WalletInner.js
+index be65d45..5621cec 100644
+--- a/src/components/WalletInner.js
++++ b/src/components/WalletInner.js
+@@ -33,7 +33,6 @@ function WalletInner(props) {
+         const   [contractAddress, setContractAddress] = useState();
+         const   [contractDetails, setContractDetails] = useState([{}]);
+         const   [notary, setNotary]=useState({address: ''});
+-        const   [contractNumber, setContractNumber]=useState(0);
+         
+ 	const isConnectedWallet = props.isConnected;
+         const payer = props.address;
+@@ -44,7 +43,7 @@ useEffect(() => {
+ })
+ 
+ return (
+-    <div className="container">
++  <div className="container">
+ 
+         <ContractContext.Provider value={{
+                 deployContract, setDeployContract,
+@@ -57,31 +56,64 @@ return (
+                 contractAddress, setContractAddress,
+                 contractDetails, setContractDetails,
+                 notary, setNotary
+-                contractNumber, setContractNumber
+         }}>
+ 
+         <div>
+-    	    <div className="row">
+-	       <ContractShow />
+-	    </div>
++  	  <div className="row">
++	    <ContractShow />
++	  </div>
++	  <div className="row">
++  	     <div className="col-8 text-center">
++	<h2>Setup Contract</h2></div>
++
++  	     <div className="col-4 text-center">
++<p><PaymentText paymentType="hover for help" paymentDesc="when there is a dot hover for more" paymentHeader="Help" /></p>
++	</div> 
++	</div>
++	<div className="row">
++  	     <div className="col-12 text-center">
++	<p>This is done once for a buyer/seller relationship. Then for all new transactions the two approves should be done, or a large
++<PaymentText paymentType="approval" paymentDesc="you approve the contracts to make payments" paymentHeader="Approval" />
++	can be done, and then just the payment part authorised for different contractual obligations. For example, this can be 
++	used for <PaymentText paymentType="rent" paymentDesc="recurring payments" paymentHeader="Rent" />, mortgage payments, 
++	<PaymentText paymentType="shopping" paymentDesc="regular shopping payments" paymentHeader="Shopping" />, and anything which requires a contract</p>
++            </div>
+ 	</div>
+ 
+-        <div>
+-	   <div className="row">
+-  	       <div className="col-12 text-center">
+-	           <h2>Settle Contract</h2>
+-               </div>
+-   	   </div>
+-	   <div className="row">
+-               <div className="col-12 text-center">
+-
+-	           { payContract && <PayContract />	}
+-	           { !payContract && <Button variant="secondary" disabled>1. Pay to Escrow</Button>	}
+-
+-	           { paySeller && <PaySeller />	}
+-	           { !paySeller && <Button variant="secondary" disabled>2. Settle to Seller</Button>	}
+-	       </div>
+-           </div>
++	<div className="row">
++  	     <div className="col-12 ">
++	{ deployContract && <DeployContract />	}
++	{ !deployContract && <Button variant="secondary" disabled>1. Create Contract</Button>	}
++        </div>
++</div>
++	<div className="row">
++  	     <div className="col-6 ">
++	{ approveContract && <ApproveContract />	}
++	{ !approveContract && <Button variant="secondary" disabled>2. Approve StableCoin Contract</Button>	}
++        </div>
++  	     <div className="col-6 ">
++	
++	{ approveEscrowContract && <ApproveEscrowContract />	}
++	{ !approveEscrowContract && <Button variant="secondary" disabled>3. Approve Escrow Contract</Button>	}
++
++        </div>
++        </div>
++
++	<div className="row">
++  	     <div className="col-12 text-center">
++	<h2>Settle Contract</h2>
++              </div>
++	</div>
++	 <div className="row">
++             <div className="col-12 text-center">
++
++	{ payContract && <PayContract />	}
++	{ !payContract && <Button variant="secondary" disabled>4. Pay to Escrow</Button>	}
++
++	{ paySeller && <PaySeller />	}
++	{ !paySeller && <Button variant="secondary" disabled>5. Settle to Seller</Button>	}
++	   </div>
++         </div>
+ 	</div>
+         </ContractContext.Provider>
+   </div>
+diff --git a/src/components/WalletInnerOld.js b/src/components/WalletInnerOld.js
+deleted file mode 100644
+index 002842e..0000000
+--- a/src/components/WalletInnerOld.js
++++ /dev/null
+@@ -1,133 +0,0 @@
+-import {useEffect, useState, useContext } from 'react'; 
+-import {SignClient } from '@walletconnect/sign-client';
+-import {Container, Card, Button, Form, Row, Col} from 'react-bootstrap';
+-import {CartContext} from '../CartContext';
+-import {ContractContext} from './ContractContext';
+-import ReactPlayer from 'react-player';
+-import DeployContract from './DeployContract';
+-import ApproveContract from './ApproveContract';
+-import PayContract from './PayContract';
+-import ApproveEscrowContract from './ApproveEscrowContract';
+-import PaySeller from './PaySeller';
+-import ContractShow from './ContractShow';
+-import PaymentText from './PaymentText';
+-import bytecode1 from './bytecode';
+-import abi from './abi';
+-
+-import {ethers} from 'ethers';
+-import {Web3Modal, Web3Button} from '@web3modal/react';
+-import {goerli,polygonMumbai, avalancheFuji, avalanche, polygon,mainnet } from "wagmi/chains";
+-import {WagmiConfig,   useAccount,configureChains, createClient, useSigner, useNetwork, useConnect, chain} from "wagmi";
+-import {EthereumClient, modalConnectors, walletConnectProvider} from "@web3modal/ethereum"
+-import { publicProvider } from 'wagmi/providers/public';
+-
+-
+-function WalletInner(props) {
+-        const   [deployContract, setDeployContract] = useState(true);
+-        const   [approveContract, setApproveContract] = useState(false);
+-        const   [payContract, setPayContract] = useState(false);
+-        const   [approveEscrowContract, setApproveEscrowContract] = useState(false);
+-        const   [paySeller, setPaySeller] = useState(false);
+-        const   [paymentAmount, setPaymentAmount] = useState();
+-        const   [erc20ContractAddress, setERC20ContractAddress] = useState();
+-        const   [contractAddress, setContractAddress] = useState();
+-        const   [contractDetails, setContractDetails] = useState([{}]);
+-        const   [notary, setNotary]=useState({address: ''});
+-        
+-	const isConnectedWallet = props.isConnected;
+-        const payer = props.address;
+-        const cart = useContext(CartContext);
+-
+-useEffect(() => {
+-		setERC20ContractAddress('0x0FA8781a83E46826621b3BC094Ea2A0212e71B23');
+-})
+-
+-return (
+-  <div className="container">
+-
+-        <ContractContext.Provider value={{
+-                deployContract, setDeployContract,
+-                approveContract, setApproveContract,
+-                payContract, setPayContract,
+-                approveEscrowContract, setApproveEscrowContract,
+-                paySeller, setPaySeller,
+-                paymentAmount, setPaymentAmount,
+-                erc20ContractAddress, setERC20ContractAddress,
+-                contractAddress, setContractAddress,
+-                contractDetails, setContractDetails,
+-                notary, setNotary
+-                contractNumber, setContractNumber
+-        }}>
+-
+-        <div>
+-  	  <div className="row">
+-	    <ContractShow />
+-	  </div>
+-	  <div className="row">
+-  	     <div className="col-8 text-center">
+-	<h2>Setup Contract</h2></div>
+-
+-  	     <div className="col-4 text-center">
+-<p><PaymentText paymentType="hover for help" paymentDesc="when there is a dot hover for more" paymentHeader="Help" /></p>
+-	</div> 
+-	</div>
+-	<div className="row">
+-  	     <div className="col-12 text-center">
+-	<p>This is done once for a buyer/seller relationship. Then for all new transactions the two approves should be done, or a large
+-<PaymentText paymentType="approval" paymentDesc="you approve the contracts to make payments" paymentHeader="Approval" />
+-	can be done, and then just the payment part authorised for different contractual obligations. For example, this can be 
+-	used for <PaymentText paymentType="rent" paymentDesc="recurring payments" paymentHeader="Rent" />, mortgage payments, 
+-	<PaymentText paymentType="shopping" paymentDesc="regular shopping payments" paymentHeader="Shopping" />, and anything which requires a contract</p>
+-            </div>
+-	</div>
+-
+-	<div className="row">
+-  	     <div className="col-12 ">
+-	{ deployContract && <DeployContract />	}
+-	{ !deployContract && <Button variant="secondary" disabled>1. Create Contract</Button>	}
+-        </div>
+-</div>
+-	<div className="row">
+-  	     <div className="col-6 ">
+-	{ approveContract && <ApproveContract />	}
+-	{ !approveContract && <Button variant="secondary" disabled>2. Approve StableCoin Contract</Button>	}
+-        </div>
+-  	     <div className="col-6 ">
+-	
+-	{ approveEscrowContract && <ApproveEscrowContract />	}
+-	{ !approveEscrowContract && <Button variant="secondary" disabled>3. Approve Escrow Contract</Button>	}
+-
+-        </div>
+-        </div>
+-
+-	<div className="row">
+-  	     <div className="col-12 text-center">
+-	<h2>Settle Contract</h2>
+-              </div>
+-	</div>
+-	 <div className="row">
+-             <div className="col-12 text-center">
+-
+-	{ payContract && <PayContract />	}
+-	{ !payContract && <Button variant="secondary" disabled>4. Pay to Escrow</Button>	}
+-
+-	{ paySeller && <PaySeller />	}
+-	{ !paySeller && <Button variant="secondary" disabled>5. Settle to Seller</Button>	}
+-	   </div>
+-         </div>
+-	</div>
+-        </ContractContext.Provider>
+-  </div>
+-);
+-
+-
+-}
+-
+-export default WalletInner;
+-
+-	
+-
+-
+-
+-
+-

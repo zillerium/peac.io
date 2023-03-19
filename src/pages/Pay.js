@@ -1,12 +1,6 @@
-import {useEffect, useState } from 'react'; 
-import {SignClient } from '@walletconnect/sign-client';
-import { Web3Modal } from "@web3modal/standalone";
-import {Card, Button, Form, Row, Col} from 'react-bootstrap';
+import {useEffect,  useContext} from 'react';
 import {CartContext} from '../CartContext';
-import {useContext} from 'react';
 import Wallet from '../components/Wallet';
-import NavbarComponent from '../components/NavbarComponent';
-import axios from 'axios';
 
 function Pay() {
 

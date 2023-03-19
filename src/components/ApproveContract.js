@@ -33,7 +33,8 @@ function ApproveContract() {
 //totAmount += item.totalAmount;
 //
 //})
-	let totAmount = contractDetails.reduce((total,item)=>total+item.totalAmount,0);
+//	let totAmount = contractDetails.reduce((total,item)=>total+item.totalAmount,0);
+        let totAmount = 10000000;
 	totAmount = totAmount * (10 ** 6);
 console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 console.log("tot", totAmount, contractAddress, erc20ContractAddress);

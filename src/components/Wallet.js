@@ -1,15 +1,9 @@
-import {useEffect, useState, useContext } from 'react'; 
-import {SignClient } from '@walletconnect/sign-client';
 import {Container, Card, Button, Form, Row, Col} from 'react-bootstrap';
-import {CartContext} from '../CartContext';
-import {ContractContext} from './ContractContext';
-import ReactPlayer from 'react-player';
 import WalletInner from './WalletInner';
-import {ethers} from 'ethers';
 import {Web3Modal, Web3Button} from '@web3modal/react';
-import {goerli,polygonMumbai, avalancheFuji, avalanche, polygon,mainnet } from "wagmi/chains";
-import {WagmiConfig,   useAccount,configureChains, createClient, useSigner, useNetwork, useConnect, chain} from "wagmi";
-import {EthereumClient, modalConnectors, walletConnectProvider} from "@web3modal/ethereum"
+import {goerli,polygonMumbai,  avalanche, polygon } from "wagmi/chains";
+import {WagmiConfig,   useAccount,configureChains, createClient,  useNetwork,  chain} from "wagmi";
+import {EthereumClient, modalConnectors} from "@web3modal/ethereum"
 import { publicProvider } from 'wagmi/providers/public';
 
 
