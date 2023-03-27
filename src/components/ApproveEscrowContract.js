@@ -11,7 +11,7 @@ function ApproveEscrowContract() {
 	 const  {
                 approveAmount, setApproveAmount,
                 payContract, setPayContract,
-                contractAddress, setContractAddress,
+                contractAddress, 
                 } = useContext(ContractContext)
 console.log("----app amt -- ", approveAmount);
 const approveAmount1 = 10000000000000;

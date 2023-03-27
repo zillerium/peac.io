@@ -11,6 +11,8 @@ const NavBar=() => {
   return <nav className="nav">
       <Link to="/" className="site-title"><img src={peacio} className="img-fluid" /></Link>
       <ul>
+		<CustomLink to="/admin" >Admin</CustomLink>
+		<CustomLink to="/orders" >Orders</CustomLink>
 		<CustomLink to="/pay" >Pay</CustomLink>
 		<CustomLink to="/cart" >Cart</CustomLink>
 		<CustomLink to="/addproduct" >Add Product</CustomLink>

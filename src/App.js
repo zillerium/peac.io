@@ -11,6 +11,8 @@ import {Link, BrowserRouter ,  Routes, Route} from 'react-router-dom';
 import Cancel from './pages/Cancel'
 import NavBar from './NavBar.js'
 import Cart from './pages/Cart.js'
+import Orders from './pages/Orders'
+import Admin from './pages/Admin'
 import Store from './pages/Store'
 import About from './pages/About'
 import ProductPage from './pages/ProductPage'
@@ -115,6 +117,8 @@ return ( data ? <img src={data.data.url}/> : <p></p>);
                      <Route path="/product/:productId" element={<ProductPage />} />
                      <Route path="/addproduct/" element={<AddProduct />} />
                      <Route path="/pay/" element={<Pay />} />
+                     <Route path="/orders/" element={<Orders />} />
+                     <Route path="/admin/" element={<Admin />} />
                      <Route path="/about/" element={<About />} />
                      <Route path="/cart/" element={<Cart />} />
 	        </Routes>

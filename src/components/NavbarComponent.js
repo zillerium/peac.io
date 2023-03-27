@@ -43,7 +43,7 @@ return (
               <Modal.Title>Shopping Cart</Modal.Title>
 	  </Modal.Header>
 	           <Modal.Body>
-                                  <Table stripod  bordered hover>
+                                  <Table stripod="true"  bordered hover>
                                             <thead>
                                                  <tr>
                                                       <th>Brand</th>

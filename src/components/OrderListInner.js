@@ -10,10 +10,12 @@ import PaySeller from './PaySeller';
 import PayContractMgr from './PayContractMgr';
 import CheckAllowance from './CheckAllowance';
 import ContractShow from './ContractShow';
+import ContractList from './ContractList';
+import GetContractList from './GetContractList';
 
 
 
-function WalletInner(props) {
+function OrderListInner(props) {
         const   [approveContract, setApproveContract] = useState(false);
         const   [approveAmount, setApproveAmount] = useState(1000000000000);
         const   [allowanceAmount, setAllowanceAmount] = useState(0);
@@ -30,6 +32,8 @@ function WalletInner(props) {
         const   [contractNumber, setContractNumber]=useState(0);
         const   [salesRelease, setSalesRelease] = useState(0);
         const   [disputeRelease, setDisputeRelease] = useState(0);
+        const   [buyerContracts, setBuyerContracts] = useState([]);
+        const   [sellerContracts, setSellerContracts] = useState([]);
         
 	const isConnectedWallet = props.isConnected;
         const payer = props.address;
@@ -64,7 +68,9 @@ return (
                 salesRelease, setSalesRelease,
                 disputeRelease, setDisputeRelease,
                 contractNumber, setContractNumber,
-                allowanceAmount, setAllowanceAmount
+                allowanceAmount, setAllowanceAmount,
+                buyerContracts, setBuyerContracts,
+                sellerContracts, setSellerContracts
         }}>
         <div>
     	    <div className="row">
@@ -75,24 +81,43 @@ return (
         <div>
 	   <div className="row">
   	       <div className="col-12 text-center">
-	           <h2>Settle Contract</h2>
+	           <h2>Contract</h2>
                </div>
    	   </div>
 
       <div className="row">
              <div className="col-6 ">
-                 <CheckAllowance address={props.address} /> 
+                 <GetContractList address={props.address} contractType={'buyer'} /> 
              </div>
+	</div>
+      <div className="row">
              <div className="col-6 ">
-	         <GetSellers />
+                 <GetContractList address={props.address} contractType={'seller'} /> 
+             </div>
+	</div>
+      <div className="row">
+             <div className="col-6 ">
+	        <h1>Buyer Contracts</h1>
+             </div>
+	</div>
+
+      <div className="row">
+	<div className="col-6 ">
+	{buyerContracts.length>0 && <ContractList address={props.address} contractType={"buyer"} contracts={buyerContracts}/> }
              </div>
       </div>
 
-	   <div className="row">
-               <div className="col-12 text-center">
-	{allowanceAmount>0 ? <PayContractMgr /> : <div>Approve Wallet First </div>}
-	       </div>
-           </div>
+      <div className="row">
+             <div className="col-6 ">
+	        <h1>Seller Contracts</h1>
+             </div>
+	</div>
+
+      <div className="row">
+	<div className="col-6 ">
+	{sellerContracts.length>0 && <ContractList address={props.address} contractType={"seller"} contracts={sellerContracts} /> }
+             </div>
+      </div>
 	</div>
         </ContractContext.Provider>
   </div>
@@ -101,7 +126,7 @@ return (
 
 }
 
-export default WalletInner;
+export default OrderListInner;
 
 
 	

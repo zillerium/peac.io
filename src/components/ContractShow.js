@@ -11,7 +11,7 @@ function ContractShow() {
                 paySeller, setPaySeller,
                 paymentAmount, setPaymentAmount,
                 erc20ContractAddress, setERC20ContractAddress,
-                contractAddress, setContractAddress,
+                contractAddress, 
 	        contractDetails, setContractDetails,
                 notary, setNotary
                 } = useContext(ContractContext);
@@ -25,7 +25,7 @@ function ContractShow() {
      return (
         <div >
 	  <b> Contract</b>
-               <Table stripod  bordered hover>
+	     <Table stripod="true"  bordered hover>
                     <thead>
                        <tr>
                          <th>Hover</th>

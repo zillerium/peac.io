@@ -7,7 +7,7 @@ import abi from './abi';
 import {Button} from 'react-bootstrap';
 
 
-function PaySeller(props) {
+function ClaimSeller(props) {
 
  const  {contractAmount, contractNumber, contractAddress,
                  } = useContext(ContractContext);
@@ -17,7 +17,7 @@ function PaySeller(props) {
  const {config, error} = usePrepareContractWrite({
                    address: contractAddress,
           abi: abi,
-          functionName: 'settlementUsdc',
+          functionName: 'claimUsdc',
 	   args: argsArray
   })
 console.log(config);
@@ -31,11 +31,11 @@ console.log(config);
 
     return (
         <>
-        <div><Button  onClick={()=>write?.()}> Settle to seller {props.contractAmount}</Button></div>
+        <div><Button  onClick={()=>write?.()}> Claim for seller {props.contractAmount}</Button></div>
             {error && (<div> error in formatting {error.message} </div>)}
         </>
     )
 
 }
 
-export default PaySeller;
+export default ClaimSeller;

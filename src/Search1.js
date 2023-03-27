@@ -39,7 +39,7 @@ const Search1 =  () => {
           </div>
                     <div>
 					<div>
-					<Table stripod  bordered hover>
+					<Table stripod="true"  bordered hover>
                                             <thead>
                                                  <tr>
                                                       <th>Brand</th>

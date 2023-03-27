@@ -16,7 +16,7 @@ function ConnectWallet() {
                 paySeller, setPaySeller,
                 paymentAmount, setPaymentAmount,
                 erc20ContractAddress, setERC20ContractAddress,
-                contractAddress, setContractAddress,
+                contractAddress, 
                 contractDetails, setContractDetails,
                 notary, setNotary
                 } = useContext(ContractContext)
