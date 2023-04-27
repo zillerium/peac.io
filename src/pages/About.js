@@ -13,6 +13,7 @@ const About = () => {
 	  <h1>About Us</h1>
         <p>Contractual Payments without an intermediary.
         </p>
+	  <p>Add your products as NFTs using <a href="https://catalox.network" target="_blank">Catalox</a></p>
 <Container>
 	  <Row><Col></Col>
 	  <Col>
