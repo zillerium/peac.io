@@ -39,7 +39,7 @@ return (
                  <CheckAllowance  address={props.address} />
              </div>
       </div>
-
+<div>allowance - {allowanceAmount}</div>
 	   <div className="row">
 	{allowanceAmount==0 ? <ApproveContract /> : <div>already approved</div>}
 	</div>

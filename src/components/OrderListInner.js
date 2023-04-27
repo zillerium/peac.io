@@ -95,28 +95,19 @@ return (
                  <GetContractList address={props.address} contractType={'seller'} /> 
              </div>
 	</div>
+
       <div className="row">
-             <div className="col-6 ">
+  	    <div className="col-12 ">
 	        <h1>Buyer Contracts</h1>
-             </div>
+	        {buyerContracts.length>0 && <ContractList address={props.address} contractType={"buyer"} contracts={buyerContracts}/> }
+            </div>
+
 	</div>
-
       <div className="row">
-	<div className="col-6 ">
-	{buyerContracts.length>0 && <ContractList address={props.address} contractType={"buyer"} contracts={buyerContracts}/> }
-             </div>
-      </div>
-
-      <div className="row">
-             <div className="col-6 ">
+  	    <div className="col-12 ">
 	        <h1>Seller Contracts</h1>
-             </div>
-	</div>
-
-      <div className="row">
-	<div className="col-6 ">
-	{sellerContracts.length>0 && <ContractList address={props.address} contractType={"seller"} contracts={sellerContracts} /> }
-             </div>
+  	        {sellerContracts.length>0 && <ContractList address={props.address} contractType={"seller"} contracts={sellerContracts} /> }
+            </div>
       </div>
 	</div>
         </ContractContext.Provider>

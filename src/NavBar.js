@@ -11,14 +11,12 @@ const NavBar=() => {
   return <nav className="nav">
       <Link to="/" className="site-title"><img src={peacio} className="img-fluid" /></Link>
       <ul>
-		<CustomLink to="/admin" >Admin</CustomLink>
+		<CustomLink to="/admin" >Connect</CustomLink>
 		<CustomLink to="/orders" >Orders</CustomLink>
 		<CustomLink to="/pay" >Pay</CustomLink>
 		<CustomLink to="/cart" >Cart</CustomLink>
-		<CustomLink to="/addproduct" >Add Product</CustomLink>
 		<CustomLink to="/about" >About</CustomLink>
-		{cart.walletStatus ? <WalletFill className="ml-4" color="#3FAF6D" /> :
-		<WalletFill className="ml-4" color="#E62729" color1="red" title="open"/>}
+		<CustomLink to="/search" >Search</CustomLink>
       </ul>
   </nav>
 

@@ -18,7 +18,7 @@ function ApproveContract() {
 
 
 
-        { allowanceAmount==0 && <ApproveContractNow />  }
+        {  <ApproveContractNow />  }
 		</div>
 
     </div>

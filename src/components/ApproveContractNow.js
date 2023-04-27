@@ -32,7 +32,9 @@ function ApproveContractNow() {
                    functionName: 'approve',
                    args:[contractAddress, totAmount]
         })
-
+console.log("hhh confifg ----- ", config);
+console.log("hhh confifg ----- ", config);
+console.log("hhh confifg ----- ", config);
         const {data, isLoading, isSuccess, write} = useContractWrite(config)
 	if (isLoading) {
              return <div>Loading ...</div>

@@ -41,6 +41,8 @@ console.log("ooooooooooooooooooo contract details ------------", contractDetails
 
    return (
     <div>
+	   <div className="row">
+       <div className="col-6">
       <h3>List of Contracts:</h3>
       <ListGroup>
         {props.contracts.map((contractNum) => (
@@ -51,9 +53,11 @@ console.log("ooooooooooooooooooo contract details ------------", contractDetails
           </ListGroup.Item>
         ))}
       </ListGroup>
+     </div>
 
       {selContract && <ContractDetails address={props.address} contractNum={selContract} />}
 
+       <div className="col-6">
       {selContract && contractDetails && JSON.stringify(contractDetails) !== JSON.stringify([{}]) && (
         <div>
           <h3>Contract Details: {selContract} ({props.contractType})</h3>
@@ -122,6 +126,8 @@ console.log("ooooooooooooooooooo contract details ------------", contractDetails
           </Table>
         </div>
       )}
+     </div>
+    </div>
     </div>
   );
 }

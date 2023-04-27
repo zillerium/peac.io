@@ -10,6 +10,7 @@ import {Container} from 'react-bootstrap';
 import {Link, BrowserRouter ,  Routes, Route} from 'react-router-dom';
 import Cancel from './pages/Cancel'
 import NavBar from './NavBar.js'
+import Welcome from './Welcome.js'
 import Cart from './pages/Cart.js'
 import Orders from './pages/Orders'
 import Admin from './pages/Admin'
@@ -17,6 +18,7 @@ import Store from './pages/Store'
 import About from './pages/About'
 import ProductPage from './pages/ProductPage'
 import AddProduct from './pages/AddProduct'
+import Voice from './pages/Voice'
 import Pay from './pages/Pay'
 import Success from './pages/Success'
 import CartProvider from './CartContext.js'
@@ -111,16 +113,18 @@ return ( data ? <img src={data.data.url}/> : <p></p>);
 
 	    </NavbarComponent>
                 <Routes>
-                     <Route index element={<Search1 />} />                    
+                     <Route index element={<Welcome />} />                    
                      <Route path="succcess" element={<Success />} />                    
                      <Route path="cancel" element={<Cancel />} />     
                      <Route path="/product/:productId" element={<ProductPage />} />
                      <Route path="/addproduct/" element={<AddProduct />} />
+                     <Route path="/voice/" element={<Voice />} />
                      <Route path="/pay/" element={<Pay />} />
                      <Route path="/orders/" element={<Orders />} />
                      <Route path="/admin/" element={<Admin />} />
                      <Route path="/about/" element={<About />} />
                      <Route path="/cart/" element={<Cart />} />
+                     <Route path="/search/" element={<Search1 />} />
 	        </Routes>
           <div>
 	  </div>
